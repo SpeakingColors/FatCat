@@ -3,6 +3,23 @@
 
 using namespace catfx;
 
+namespace
+{
+// Smooth analog-style clip. Up to about 75 % drive the knee is wide and rounded (thick and smooth);
+// from 75 % to 100 % the knee tightens progressively so it turns harsher only at the very end.
+struct SatShape
+{
+    float g, p, norm;
+    explicit SatShape(float drive)
+    {
+        const float t = juce::jlimit(0.f, 1.f, (drive - 0.75f) / 0.25f), sm = t * t * (3.f - 2.f * t);
+        g = 1.f + 22.f * drive; p = 1.6f + 4.4f * sm;
+        norm = std::pow(1.f + std::pow(g, p), 1.f / p) / g;      // so a full-scale input still maps to full scale
+    }
+    float operator()(float x) const { const float u = x * g; return u / std::pow(1.f + std::pow(std::abs(u), p), 1.f / p) * norm; }
+};
+}
+
 FatCat::FatCat()
     : FxBase("Fat Cat",
         { { "drive", "Drive", " %", 0.f, 100.f, 40.f, 0.f, "Drive: how hard the sound is saturated. Even at 0 % a very light touch of warmth stays on by design. Dynamics are kept at any input level." },
@@ -56,7 +73,7 @@ void FatCat::process(juce::AudioBuffer<float>& buf, const juce::AudioBuffer<floa
     const int n = buf.getNumSamples(), nch = juce::jmin(2, buf.getNumChannels());
     const float drive = get("drive") * 0.01f, fuzz = get("fuzz") * 0.01f, color = get("color"), turbo = get("turbo") * 0.01f;
     const float mix = get("mix") * 0.01f, outG = juce::Decibels::decibelsToGain(get("out"));
-    const float g = 1.f + drive * 24.f, norm = 1.f / std::tanh(g);
+    const SatShape shape(drive);
     const float aA = std::exp(-1.f / (0.001f * (float) fs)), aR = std::exp(-1.f / (0.05f * (float) fs));
     const float colourK = color * 0.01f * 1.6f;
     for (int c = 0; c < nch; ++c) { band[c].setCutoffFrequency(colourFreq(color)); band[c].setResonance(1.4f); }
@@ -86,7 +103,7 @@ void FatCat::process(juce::AudioBuffer<float>& buf, const juce::AudioBuffer<floa
     for (size_t c = 0; c < up.getNumChannels(); ++c)
     {
         auto* d = up.getChannelPointer(c);
-        for (size_t i = 0; i < up.getNumSamples(); ++i) d[i] = std::tanh(juce::jlimit(-8.f, 8.f, d[i]) * g) * norm;
+        for (size_t i = 0; i < up.getNumSamples(); ++i) d[i] = shape(juce::jlimit(-8.f, 8.f, d[i]));
     }
     os.processSamplesDown(block);
 
@@ -126,13 +143,13 @@ void FatCat::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r)
     g.setFont(juce::FontOptions(11.f));
     if (idx == 0)       // saturation curve
     {
-        const float gn = 1.f + get("drive") * 0.01f * 24.f, norm = 1.f / std::tanh(gn);
+        const SatShape shape(get("drive") * 0.01f); const float gn = shape.g;
         auto p = r.withTrimmedLeft(8.f).reduced(10.f, 14.f); p.removeFromBottom(10.f);
         g.setColour(grid()); g.drawRect(p); g.drawLine(p.getX(), p.getBottom(), p.getRight(), p.getY());
         juce::Path path;
-        for (int i = 0; i <= 160; ++i) { const float x = (float) i / 160.f, y = std::tanh(x * gn) * norm; const float px = p.getX() + x * p.getWidth(), py = p.getBottom() - y * p.getHeight(); i ? path.lineTo(px, py) : path.startNewSubPath(px, py); }
+        for (int i = 0; i <= 160; ++i) { const float x = (float) i / 160.f, y = shape(x); const float px = p.getX() + x * p.getWidth(), py = p.getBottom() - y * p.getHeight(); i ? path.lineTo(px, py) : path.startNewSubPath(px, py); }
         g.setColour(accent()); g.strokePath(path, juce::PathStrokeType(2.f));
-        const float lv = juce::jlimit(0.f, 1.f, lastN.load()), yy = std::tanh(lv * gn) * norm;
+        const float lv = juce::jlimit(0.f, 1.f, lastN.load()), yy = shape(lv);
         g.setColour(juce::Colours::white); g.fillEllipse(p.getX() + lv * p.getWidth() - 3.f, p.getBottom() - yy * p.getHeight() - 3.f, 6.f, 6.f);
         g.setColour(dim());
         g.drawText("output", (int) r.getX() + 2, (int) r.getY() + 1, 60, 11, juce::Justification::left);
