@@ -151,7 +151,7 @@ void FatCat::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r)
         g.setColour(accent()); g.strokePath(path, juce::PathStrokeType(2.f));
         const float lv = juce::jlimit(0.f, 1.f, lastN.load()), yy = shape(lv);
         g.setColour(juce::Colours::white); g.fillEllipse(p.getX() + lv * p.getWidth() - 3.f, p.getBottom() - yy * p.getHeight() - 3.f, 6.f, 6.f);
-        g.setColour(dim());
+        g.setColour(green());
         g.drawText("output", (int) r.getX() + 2, (int) r.getY() + 1, 60, 11, juce::Justification::left);
         g.setColour(accent()); g.drawText("drive x" + juce::String(gn, 1), (int) r.getRight() - 80, (int) r.getY() + 1, 76, 11, juce::Justification::right);
         g.drawText("level relative to its own peak (dynamics kept)", p.toNearestInt().withY((int) p.getBottom() + 1).withHeight(11), juce::Justification::centred);
@@ -201,8 +201,8 @@ void FatCat::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r)
             g.setColour(blue().interpolatedWith(accent(), juce::jlimit(0.f, 1.f, std::abs(pt.x) * 3.f)).withAlpha(pt.life * 0.8f));
             g.fillEllipse(px - 1.5f, py - 1.5f, 3.f, 3.f);
         }
-        g.setColour(dim()); g.setFont(juce::FontOptions(10.f));
-        g.drawText("side", (int) p.getRight() - 30, (int) cy + 2, 28, 10, juce::Justification::right); g.drawText("mid", (int) cx + 3, (int) p.getY() + 1, 30, 10, juce::Justification::left);
+        g.setFont(juce::FontOptions(10.f));
+        g.setColour(accent()); g.drawText("side", (int) p.getRight() - 30, (int) cy + 2, 28, 10, juce::Justification::right); g.setColour(green()); g.drawText("mid", (int) cx + 3, (int) p.getY() + 1, 30, 10, juce::Justification::left);
         g.setColour(blue()); g.drawText("right delay " + juce::String(get("turbo") * 0.01f * 12.f, 1) + " ms", p.toNearestInt().withY((int) p.getBottom() - 12).withHeight(11), juce::Justification::centred);
     }
     else                // level: input and output with dB scales
