@@ -202,7 +202,7 @@ void FatCat::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r)
             g.fillEllipse(px - 1.5f, py - 1.5f, 3.f, 3.f);
         }
         g.setFont(juce::FontOptions(10.f));
-        g.setColour(accent()); g.drawText("side", (int) p.getRight() - 30, (int) cy + 2, 28, 10, juce::Justification::right); g.setColour(green()); g.drawText("mid", (int) cx + 3, (int) p.getY() + 1, 30, 10, juce::Justification::left);
+        g.setColour(accent()); g.drawText("side", (int) p.getRight() - 30, (int) cy + 2, 28, 10, juce::Justification::right); g.setColour(accent()); g.drawText("mid", (int) cx + 3, (int) p.getY() + 1, 30, 10, juce::Justification::left);
         g.setColour(blue()); g.drawText("right delay " + juce::String(get("turbo") * 0.01f * 12.f, 1) + " ms", p.toNearestInt().withY((int) p.getBottom() - 12).withHeight(11), juce::Justification::centred);
     }
     else                // level: input and output with dB scales
