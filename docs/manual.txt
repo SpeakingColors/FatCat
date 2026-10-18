@@ -1,0 +1,14 @@
+# Intro
+Fat Cat is a saturator that keeps your dynamics. The signal is divided by its own level, saturated, then multiplied back, so it sounds the same whether you feed it quietly or loudly. Use it to add weight, warmth and bite to basses, leads, drums and buses.
+
+# Quick start
+- Start from a preset, then raise Drive until the sound feels thicker, not louder.
+- Use Color to pick the band that gets the most saturation (150 Hz for body, 2 to 6 kHz for bite).
+- Add Fuzz for edge on the highs and Stereo Turbo for width.
+- Match Output to the bypassed level while comparing.
+
+# Recommendations
+- Bass: Drive 40 to 60, Color around 150 to 400 Hz, Fuzz low so the sub stays clean.
+- Lead or supersaw: Drive 30 to 50, Color 2 to 4 kHz, Stereo Turbo for width; lower Mix if it gets harsh.
+- Drums or bus: Drive 15 to 30 with Mix 60 to 100 for gentle glue.
+- Stereo Turbo delays the right channel: check the result in mono before you commit.
