@@ -1,4 +1,5 @@
 #include "FatCat.h"
+#include "../common/Viz.h"
 
 using namespace catfx;
 
