@@ -28,7 +28,7 @@
 -- Exporting juceaide
 -- Testing juceaide
 -- Finished setting up juceaide
--- Configuring done (101.5s)
+-- Configuring done (92.6s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/runner/work/FatCat/FatCat/build
 [  1%] Building VST3 manifest helper for FatCat
@@ -62,10 +62,17 @@ gmake[3]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rul
 [ 24%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_data_structures/juce_data_structures.cpp.o
 [ 26%] Linking CXX static library libcat_ui.a
 [ 26%] Built target cat_ui
-[ 27%] Building CXX object CMakeFiles/FatCat.dir/src/common/FxBase.cpp.o
+[ 29%] Building CXX object CMakeFiles/FatCat.dir/src/common/FxBase.cpp.o
 [ 29%] Building CXX object CMakeFiles/FatCat.dir/src/common/FxEditor.cpp.o
 [ 31%] Building CXX object CMakeFiles/FatCat.dir/src/Plugins.cpp.o
 [ 32%] Building CXX object CMakeFiles/FatCat.dir/src/fatcat/FatCat.cpp.o
+In file included from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
+                 from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:64,
+                 from /home/runner/work/FatCat/FatCat/src/common/FxBase.h:2,
+                 from /home/runner/work/FatCat/FatCat/src/Plugins.cpp:2:
+/home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h:292:18: warning: ‘virtual void juce::AudioProcessor::processBlock(juce::AudioBuffer<double>&, juce::MidiBuffer&)’ was hidden [-Woverloaded-virtual=]
+  292 |     virtual void processBlock (AudioBuffer<double>& buffer,
+      |                  ^~~~~~~~~~~~
 In file included from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
                  from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:64,
                  from /home/runner/work/FatCat/FatCat/src/common/FxBase.h:2,
@@ -77,19 +84,28 @@ In file included from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modul
 /home/runner/work/FatCat/FatCat/src/common/FxBase.h:41:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
    41 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
       |          ^~~~~~~~~~~~
-In file included from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
-                 from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:64,
-                 from /home/runner/work/FatCat/FatCat/src/common/FxBase.h:2,
-                 from /home/runner/work/FatCat/FatCat/src/Plugins.cpp:2:
-/home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h:292:18: warning: ‘virtual void juce::AudioProcessor::processBlock(juce::AudioBuffer<double>&, juce::MidiBuffer&)’ was hidden [-Woverloaded-virtual=]
-  292 |     virtual void processBlock (AudioBuffer<double>& buffer,
-      |                  ^~~~~~~~~~~~
 /home/runner/work/FatCat/FatCat/src/common/FxBase.h:41:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
    41 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
       |          ^~~~~~~~~~~~
 In file included from /home/runner/work/FatCat/FatCat/src/common/FxEditor.h:3:
 /home/runner/work/FatCat/FatCat/src/common/Viz.h: In function ‘void catfx::viz::grMeter(juce::Graphics&, juce::Rectangle<float>, float, float)’:
 /home/runner/work/FatCat/FatCat/src/common/Viz.h:89:45: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   89 |         g.setColour(dim()); g.drawText(tick == 0.f ? "0" : "-" + juce::String((int) tick), (int) track.getRight() + 4, (int) y - 5, 24, 10, juce::Justification::left);
+      |                                        ~~~~~^~~~~~
+In file included from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
+                 from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:64,
+                 from /home/runner/work/FatCat/FatCat/src/common/FxBase.h:2,
+                 from /home/runner/work/FatCat/FatCat/src/fatcat/FatCat.h:2,
+                 from /home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:1:
+/home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h:292:18: warning: ‘virtual void juce::AudioProcessor::processBlock(juce::AudioBuffer<double>&, juce::MidiBuffer&)’ was hidden [-Woverloaded-virtual=]
+  292 |     virtual void processBlock (AudioBuffer<double>& buffer,
+      |                  ^~~~~~~~~~~~
+/home/runner/work/FatCat/FatCat/src/common/FxBase.h:41:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
+   41 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
+      |          ^~~~~~~~~~~~
+In file included from /home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:2:
+/home/runner/work/FatCat/FatCat/src/fatcat/../common/Viz.h: In function ‘void catfx::viz::grMeter(juce::Graphics&, juce::Rectangle<float>, float, float)’:
+/home/runner/work/FatCat/FatCat/src/fatcat/../common/Viz.h:89:45: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
    89 |         g.setColour(dim()); g.drawText(tick == 0.f ? "0" : "-" + juce::String((int) tick), (int) track.getRight() + 4, (int) y - 5, 24, 10, juce::Justification::left);
       |                                        ~~~~~^~~~~~
 In file included from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
@@ -108,84 +124,49 @@ In file included from /home/runner/work/FatCat/FatCat/src/common/FxEditor.h:3,
 /home/runner/work/FatCat/FatCat/src/common/Viz.h:89:45: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
    89 |         g.setColour(dim()); g.drawText(tick == 0.f ? "0" : "-" + juce::String((int) tick), (int) track.getRight() + 4, (int) y - 5, 24, 10, juce::Justification::left);
       |                                        ~~~~~^~~~~~
-In file included from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
-                 from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:64,
-                 from /home/runner/work/FatCat/FatCat/src/common/FxBase.h:2,
-                 from /home/runner/work/FatCat/FatCat/src/fatcat/FatCat.h:2,
-                 from /home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:1:
-/home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h:292:18: warning: ‘virtual void juce::AudioProcessor::processBlock(juce::AudioBuffer<double>&, juce::MidiBuffer&)’ was hidden [-Woverloaded-virtual=]
-  292 |     virtual void processBlock (AudioBuffer<double>& buffer,
-      |                  ^~~~~~~~~~~~
-/home/runner/work/FatCat/FatCat/src/common/FxBase.h:41:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
-   41 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
-      |          ^~~~~~~~~~~~
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp: In member function ‘virtual void FatCat::paintPanel(int, juce::Graphics&, juce::Rectangle<float>)’:
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:124:28: error: ‘viz’ is not a namespace-name
-  124 |     using namespace catfx::viz;
-      |                            ^~~
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:130:21: error: ‘grid’ was not declared in this scope
-  130 |         g.setColour(grid()); g.drawRect(p); g.drawLine(p.getX(), p.getBottom(), p.getRight(), p.getY());
-      |                     ^~~~
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:133:21: error: ‘accent’ was not declared in this scope; did you mean ‘acct’?
-  133 |         g.setColour(accent()); g.strokePath(path, juce::PathStrokeType(2.f));
-      |                     ^~~~~~
-      |                     acct
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:136:21: error: ‘dim’ was not declared in this scope; did you mean ‘fdim’?
-  136 |         g.setColour(dim());
-      |                     ^~~
-      |                     fdim
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:145:21: error: ‘bg’ was not declared in this scope; did you mean ‘g’?
-  145 |         g.setColour(bg().brighter(0.04f)); g.fillRect(p);
-      |                     ^~
-      |                     g
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:146:9: error: ‘dbAxis’ was not declared in this scope
-  146 |         dbAxis(g, p, -6.f, 18.f, 6.f); freqAxis(g, p);
-      |         ^~~~~~
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:146:40: error: ‘freqAxis’ was not declared in this scope
-  146 |         dbAxis(g, p, -6.f, 18.f, 6.f); freqAxis(g, p);
-      |                                        ^~~~~~~~
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:159:21: error: ‘green’ was not declared in this scope; did you mean ‘juce::Colours::green’?
-  159 |         g.setColour(green()); g.strokePath(cp, juce::PathStrokeType(2.f));
-      |                     ^~~~~
-      |                     juce::Colours::green
-In file included from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_graphics/juce_graphics.h:125,
-                 from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics.h:68,
-                 from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_gui_extra/juce_gui_extra.h:68,
-                 from /home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:65:
-/home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_graphics/colour/juce_Colours.h:99:18: note: ‘juce::Colours::green’ declared here
-   99 |     const Colour green                { 0xff008000 };
-      |                  ^~~~~
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:160:21: error: ‘accent’ was not declared in this scope; did you mean ‘acct’?
-  160 |         g.setColour(accent()); g.strokePath(fp, juce::PathStrokeType(2.f));
-      |                     ^~~~~~
-      |                     acct
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:167:21: error: ‘bg’ was not declared in this scope; did you mean ‘g’?
-  167 |         g.setColour(bg().brighter(0.05f)); g.fillRect(p);
-      |                     ^~
-      |                     g
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:169:21: error: ‘grid’ was not declared in this scope
-  169 |         g.setColour(grid()); g.drawLine(p.getX(), cy, p.getRight(), cy); g.drawLine(cx, p.getY(), cx, p.getBottom());
-      |                     ^~~~
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:183:25: error: ‘blue’ was not declared in this scope; did you mean ‘juce::Colours::blue’?
-  183 |             g.setColour(blue().interpolatedWith(accent(), juce::jlimit(0.f, 1.f, std::abs(pt.x) * 3.f)).withAlpha(pt.life * 0.8f));
-      |                         ^~~~
-      |                         juce::Colours::blue
-/home/runner/work/FatCat/FatCat/build/_deps/juce-src/modules/juce_graphics/colour/juce_Colours.h:57:18: note: ‘juce::Colours::blue’ declared here
-   57 |     const Colour blue                 { 0xff0000ff };
-      |                  ^~~~
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:183:49: error: ‘accent’ was not declared in this scope; did you mean ‘acct’?
-  183 |             g.setColour(blue().interpolatedWith(accent(), juce::jlimit(0.f, 1.f, std::abs(pt.x) * 3.f)).withAlpha(pt.life * 0.8f));
-      |                                                 ^~~~~~
-      |                                                 acct
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:186:21: error: ‘dim’ was not declared in this scope; did you mean ‘fdim’?
-  186 |         g.setColour(dim()); g.setFont(juce::FontOptions(10.f));
-      |                     ^~~
-      |                     fdim
-/home/runner/work/FatCat/FatCat/src/fatcat/FatCat.cpp:194:9: error: ‘meter’ was not declared in this scope
-  194 |         meter(g, left, inLevel.load(), "IN dB");
-      |         ^~~~~
 [ 34%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.cpp.o
-gmake[2]: *** [CMakeFiles/FatCat.dir/build.make:121: CMakeFiles/FatCat.dir/src/fatcat/FatCat.cpp.o] Error 1
-gmake[2]: *** Waiting for unfinished jobs....
-gmake[1]: *** [CMakeFiles/Makefile2:201: CMakeFiles/FatCat.dir/all] Error 2
-gmake: *** [Makefile:136: all] Error 2
+[ 36%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_gui_extra/juce_gui_extra.cpp.o
+[ 37%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics.cpp.o
+[ 39%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_2.cpp.o
+[ 40%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_3.cpp.o
+[ 42%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_4.cpp.o
+[ 44%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_5.cpp.o
+[ 45%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_graphics/juce_graphics.cpp.o
+[ 47%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o
+[ 49%] Building C object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_graphics/juce_graphics_Sheenbidi.c.o
+[ 50%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_events/juce_events.cpp.o
+[ 52%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_core/juce_core.cpp.o
+[ 54%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_core/juce_core_CompilationTime.cpp.o
+[ 55%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_data_structures/juce_data_structures.cpp.o
+[ 57%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o
+[ 59%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o
+[ 60%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o
+[ 62%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_basics/juce_audio_basics.cpp.o
+[ 63%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_utils/juce_audio_utils.cpp.o
+[ 65%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_formats/juce_audio_formats.cpp.o
+[ 67%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_devices/juce_audio_devices.cpp.o
+[ 68%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_dsp/juce_dsp.cpp.o
+[ 70%] Linking CXX static library "FatCat_artefacts/Release/libFat Cat_SharedCode.a"
+[ 70%] Built target FatCat
+[ 73%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX.cpp.o
+[ 73%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX.cpp.o
+[ 75%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX_utils.cpp.o
+[ 77%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX_utils.cpp.o
+[ 78%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_ARA.cpp.o
+[ 80%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_ARA.cpp.o
+[ 81%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_LV2.cpp.o
+[ 83%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp.o
+[ 85%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Unity.cpp.o
+[ 86%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_LV2.cpp.o
+[ 88%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp.o
+[ 90%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Unity.cpp.o
+[ 91%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.cpp.o
+[ 93%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.cpp.o
+[ 95%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.cpp.o
+[ 96%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.cpp.o
+[ 98%] Linking CXX executable "FatCat_artefacts/Release/Standalone/Fat Cat"
+[ 98%] Built target FatCat_Standalone
+[100%] Linking CXX shared module "FatCat_artefacts/Release/VST3/Fat Cat.vst3/Contents/x86_64-linux/Fat Cat.so"
+removing moduleinfo.json
+creating /home/runner/work/FatCat/FatCat/build/FatCat_artefacts/Release/VST3/Fat Cat.vst3/Contents/Resources/moduleinfo.json
+[100%] Built target FatCat_VST3
