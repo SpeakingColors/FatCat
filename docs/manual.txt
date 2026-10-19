@@ -4,7 +4,9 @@ Fat Cat is a saturator that keeps your dynamics. The signal is divided by its ow
 # Quick start
 - Start from a preset, then raise Drive until the sound feels thicker, not louder.
 - Use Color to pick the band that gets the most saturation (150 Hz for body, 2 to 6 kHz for bite).
+- Add Transistor for warm, thick even harmonics and Grit for a lopsided fuzz-style edge; both stack on top of Drive.
 - Add Fuzz for edge on the highs and Stereo Turbo for width.
+- Drive character: Shipped is the plain saturation. The PurrOne stack swaps it for the three-stage colour shaper from the PurrOne synth (drive, transistor, grit), nastier above 80 % and still smooth.
 - Match Output to the bypassed level while comparing.
 
 # Recommendations
@@ -12,3 +14,6 @@ Fat Cat is a saturator that keeps your dynamics. The signal is divided by its ow
 - Lead or supersaw: Drive 30 to 50, Color 2 to 4 kHz, Stereo Turbo for width; lower Mix if it gets harsh.
 - Drums or bus: Drive 15 to 30 with Mix 60 to 100 for gentle glue.
 - Stereo Turbo delays the right channel: check the result in mono before you commit.
+- Every knob is smoothed over 20 ms, so moves are heard at once without clicks.
+- A soft peak clipper (no knob) always runs just before the safety limiter: it only shaves the tallest peaks so the sound stays loud and clean.
+- Latency: a few samples (oversampling), reported to your host, which compensates it.
