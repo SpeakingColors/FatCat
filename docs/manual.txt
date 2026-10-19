@@ -8,6 +8,7 @@ Fat Cat is a saturator that keeps your dynamics. The signal is divided by its ow
 - Add Fuzz for edge on the highs and Stereo Turbo for width.
 - Drive character: Shipped is the plain saturation. The PurrOne stack swaps it for the three-stage colour shaper from the PurrOne synth (drive, transistor, grit), nastier above 80 % and still smooth.
 - Match Output to the bypassed level while comparing.
+- The round gear button in the header opens Settings: the plugin version, a link to the GitHub page and the releases page (it opens your browser; the plugin itself never goes online), and a switch for the info bubbles. Hover any control for about one second to see what it does; the round i button also turns the bubbles on or off.
 
 # Recommendations
 - Bass: Drive 40 to 60, Color around 150 to 400 Hz, Fuzz low so the sub stays clean.
