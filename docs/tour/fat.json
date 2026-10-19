@@ -1,0 +1,271 @@
+{
+ "key": "fat",
+ "preset": "Init",
+ "box": [
+  100,
+  207.78125,
+  1100,
+  450.15625
+ ],
+ "items": [
+  {
+   "title": "Saturation",
+   "box": [
+    135,
+    272.78125,
+    253.453125,
+    372.15625
+   ],
+   "disp": {
+    "letter": "A",
+    "box": [
+     143,
+     302.171875,
+     237.453125,
+     194
+    ]
+   },
+   "items": [
+    {
+     "n": 6,
+     "kind": "knob",
+     "name": "Drive",
+     "tip": "Drive: how hard the sound is saturated. Extended range goes to 300 %. With the PurrOne stack character this is the opamp-style tanh stage; above 80 % it stacks a second stage.",
+     "value": "40 %",
+     "box": [
+      143,
+      502.171875,
+      77.8125,
+      95.765625
+     ]
+    },
+    {
+     "n": 7,
+     "kind": "knob",
+     "name": "Transistor",
+     "tip": "Transistor stage (PurrOne stack): asymmetric soft clip with even harmonics, warm and thick, not buzzy. Only active with the PurrOne stack character.",
+     "value": "0 %",
+     "box": [
+      222.8125,
+      502.171875,
+      77.8125,
+      95.765625
+     ]
+    },
+    {
+     "n": 8,
+     "kind": "knob",
+     "name": "Grit (fuzz stage)",
+     "tip": "Fuzz stage of the PurrOne stack: lopsided hard clip, above 80 % adds a smooth octave-up growl. Only active with the PurrOne stack character.",
+     "value": "0 %",
+     "box": [
+      302.625,
+      502.171875,
+      77.8125,
+      95.765625
+     ]
+    },
+    {
+     "n": 9,
+     "kind": "menu",
+     "name": "Shipped is the current plain saturation. The PurrOne stack is the three-stage colour shaper from the PurrOne synth",
+     "tip": "Shipped is the current plain saturation. The PurrOne stack is the three-stage colour shaper from the PurrOne synth: opamp drive, Neve-style transistor and fuzz, nastier above 80 %, smooth (no digital fizz), with a fizz low-pass that closes as it gets nastier.",
+     "value": "Shipped",
+     "box": [
+      145,
+      603.9375,
+      235.453125,
+      33
+     ]
+    }
+   ],
+   "img": "fat_p1.png"
+  },
+  {
+   "title": "Tone",
+   "box": [
+    400.453125,
+    272.78125,
+    293.015625,
+    372.15625
+   ],
+   "disp": {
+    "letter": "B",
+    "box": [
+     408.453125,
+     302.171875,
+     277.015625,
+     194
+    ]
+   },
+   "items": [
+    {
+     "n": 10,
+     "kind": "knob",
+     "name": "Color",
+     "tip": "Color: emphasises one band (150 Hz to 6 kHz) before saturation. Low = warmth, high = bite and air.",
+     "value": "0 %",
+     "box": [
+      408.453125,
+      502.171875,
+      137.515625,
+      84
+     ]
+    },
+    {
+     "n": 11,
+     "kind": "knob",
+     "name": "Fuzz",
+     "tip": "Fuzz: adds clipped high frequencies (above about 1.5 kHz) for a buzzy, raw top end. Extended range goes to 300 %.",
+     "value": "0 %",
+     "box": [
+      547.96875,
+      502.171875,
+      137.515625,
+      84
+     ]
+    }
+   ],
+   "img": "fat_p2.png"
+  },
+  {
+   "title": "Stereo",
+   "box": [
+    705.46875,
+    272.78125,
+    213.875,
+    372.15625
+   ],
+   "disp": {
+    "letter": "C",
+    "box": [
+     713.46875,
+     302.171875,
+     197.875,
+     194
+    ]
+   },
+   "items": [
+    {
+     "n": 12,
+     "kind": "knob",
+     "name": "Stereo Turbo",
+     "tip": "Stereo Turbo: delays the right channel by up to 12 ms for width. Check the mix in mono, too much can thin it out. The lab feeds the same mono source to both sides so you hear the pure effect.",
+     "value": "0 %",
+     "box": [
+      713.46875,
+      502.171875,
+      197.875,
+      84
+     ]
+    }
+   ],
+   "img": "fat_p3.png"
+  },
+  {
+   "title": "Level",
+   "box": [
+    931.34375,
+    272.78125,
+    233.65625,
+    372.15625
+   ],
+   "disp": {
+    "letter": "D",
+    "box": [
+     939.34375,
+     302.171875,
+     217.65625,
+     194
+    ]
+   },
+   "items": [
+    {
+     "n": 13,
+     "kind": "knob",
+     "name": "Mix",
+     "tip": "Mix: dry/wet.",
+     "value": "100 %",
+     "box": [
+      939.34375,
+      502.171875,
+      107.828125,
+      84
+     ]
+    },
+    {
+     "n": 14,
+     "kind": "knob",
+     "name": "Output",
+     "tip": "Output level.",
+     "value": "0.0 dB",
+     "box": [
+      1049.171875,
+      502.171875,
+      107.828125,
+      84
+     ]
+    }
+   ],
+   "img": "fat_p4.png"
+  }
+ ],
+ "displays": [],
+ "top": [
+  {
+   "n": 1,
+   "name": "Preset menu",
+   "tip": "Factory presets (our own) and your saved presets.",
+   "box": [
+    674.171875,
+    225.28125,
+    191,
+    33
+   ]
+  },
+  {
+   "n": 2,
+   "name": "Randomize",
+   "tip": "Set the knobs to random values (output level, mix, cuts and pan are kept).",
+   "box": [
+    873.171875,
+    224.984375,
+    97.390625,
+    33.59375
+   ]
+  },
+  {
+   "n": 3,
+   "name": "Clipper",
+   "tip": "Soft peak clipper right before the safety limiter (always there, no knob): shaves only the tallest peaks so the limiter works less and the whole thing sits louder without harshness. Switch it off to hear the difference.",
+   "box": [
+    978.5625,
+    224.984375,
+    71.59375,
+    33.59375
+   ]
+  },
+  {
+   "n": 4,
+   "name": "Limiter",
+   "tip": "Safety limiter on the output: keeps the level from ever passing 0 dBFS, smooth and transparent. Turn it off for the raw output.",
+   "box": [
+    1058.15625,
+    224.984375,
+    68.84375,
+    33.59375
+   ]
+  },
+  {
+   "n": 5,
+   "name": "Info bubbles (i)",
+   "tip": "Info bubbles: hover a control for one second to see what it does. Click to turn them off or on.",
+   "box": [
+    1135,
+    226.78125,
+    30,
+    30
+   ]
+  }
+ ]
+}
