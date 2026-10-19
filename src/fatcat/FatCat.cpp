@@ -87,10 +87,10 @@ float softClipHidden(float v)
 
 FatCat::FatCat()
     : FxBase("Fat Cat",
-        { { "drive", "Drive", " %", 0.f, 100.f, 40.f, 0.f, "Drive: how hard the sound is saturated. Even at 0 % a very light touch of warmth stays on by design. Dynamics are kept at any input level. With the PurrOne stack character this is the opamp-style tanh stage; above 80 % it stacks a second stage." },
-          { "xs", "Transistor", " %", 0.f, 100.f, 0.f, 0.f, "Transistor: asymmetric soft clip with even harmonics, warm and thick, not buzzy. Adds on top of Drive in Shipped, and is the middle stage of the PurrOne stack." },
-          { "grit", "Grit", " %", 0.f, 100.f, 0.f, 0.f, "Grit: lopsided fuzz-style clip, above 80 % it adds a smooth octave-up growl. Adds on top of Drive in Shipped, and is the last stage of the PurrOne stack." },
-          { "fuzz", "Fuzz", " %", 0.f, 100.f, 0.f, 0.f, "Fuzz: adds clipped high frequencies (above about 1.5 kHz) for a buzzy, raw top end." },
+        { { "drive", "Drive", " %", 0.f, 100.f, 40.f, 0.f, "Drive: how hard the sound is saturated. Even at 0 % a very light touch of warmth stays on by design. Dynamics are kept at any input level. With the PurrOne stack character this is the opamp-style tanh stage; above 80 % it stacks a second stage.", 300.f },
+          { "xs", "Transistor", " %", 0.f, 100.f, 0.f, 0.f, "Transistor: asymmetric soft clip with even harmonics, warm and thick, not buzzy. Adds on top of Drive in Shipped, and is the middle stage of the PurrOne stack.", 200.f },
+          { "grit", "Grit", " %", 0.f, 100.f, 0.f, 0.f, "Grit: lopsided fuzz-style clip, above 80 % it adds a smooth octave-up growl. Adds on top of Drive in Shipped, and is the last stage of the PurrOne stack.", 200.f },
+          { "fuzz", "Fuzz", " %", 0.f, 100.f, 0.f, 0.f, "Fuzz: adds clipped high frequencies (above about 1.5 kHz) for a buzzy, raw top end.", 300.f },
           { "color", "Color", " %", 0.f, 100.f, 0.f, 0.f, "Color: emphasises one band of the sound before it is saturated. Low = bass and warmth, high = bite and air." },
           { "turbo", "Stereo Turbo", " %", 0.f, 100.f, 0.f, 0.f, "Stereo Turbo: delays the right channel by a few milliseconds for width. Check the mix in mono, too much can thin it out." },
           { "mix", "Mix", " %", 0.f, 100.f, 100.f, 0.f, "Mix: blend between the original (dry) and the saturated (wet) sound." },
@@ -147,8 +147,8 @@ void FatCat::prepare(double sr, int bs)
     ringPos = turboPos = 0; env = 0.f; dc[0] = dc[1] = 0.f;
     // 20 ms smoothing on every knob (never slower, so a knob move is heard at once)
     for (auto* s : { &sDrive, &sXs, &sGrit, &sFuzz, &sColor, &sTurbo, &sMix, &sOut }) s->reset(sr, 0.02);
-    sDrive.setCurrentAndTargetValue(pDrive->load()); sXs.setCurrentAndTargetValue(pXs->load()); sGrit.setCurrentAndTargetValue(pGrit->load());
-    sFuzz.setCurrentAndTargetValue(pFuzz->load()); sColor.setCurrentAndTargetValue(pColor->load()); sTurbo.setCurrentAndTargetValue(pTurbo->load());
+    sDrive.setCurrentAndTargetValue(get("drive")); sXs.setCurrentAndTargetValue(get("xs")); sGrit.setCurrentAndTargetValue(get("grit"));
+    sFuzz.setCurrentAndTargetValue(get("fuzz")); sColor.setCurrentAndTargetValue(pColor->load()); sTurbo.setCurrentAndTargetValue(pTurbo->load());
     sMix.setCurrentAndTargetValue(pMix->load()); sOut.setCurrentAndTargetValue(pOut->load());
 }
 
@@ -156,8 +156,8 @@ void FatCat::process(juce::AudioBuffer<float>& buf, const juce::AudioBuffer<floa
 {
     const int n = buf.getNumSamples(), nch = juce::jmin(2, buf.getNumChannels());
     if (nch < 1) return;
-    sDrive.setTargetValue(pDrive->load()); sXs.setTargetValue(pXs->load()); sGrit.setTargetValue(pGrit->load());
-    sFuzz.setTargetValue(pFuzz->load()); sColor.setTargetValue(pColor->load()); sTurbo.setTargetValue(pTurbo->load());
+    sDrive.setTargetValue(get("drive")); sXs.setTargetValue(get("xs")); sGrit.setTargetValue(get("grit"));
+    sFuzz.setTargetValue(get("fuzz")); sColor.setTargetValue(pColor->load()); sTurbo.setTargetValue(pTurbo->load());
     sMix.setTargetValue(pMix->load()); sOut.setTargetValue(pOut->load());
     const bool pur = pChar->load() > 0.5f;
     const float aA = std::exp(-1.f / (0.001f * (float) fs)), aR = std::exp(-1.f / (0.05f * (float) fs));
