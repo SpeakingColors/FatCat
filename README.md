@@ -6,6 +6,8 @@ Free, open source saturator for Linux, macOS and Windows (VST3 and standalone). 
 
 **Manual:** [PDF with interface tour, opens in the browser](https://github.com/SpeakingColors/FatCat/blob/main/docs/FatCat-manual.pdf)
 
+<p align="center"><img src="docs/screenshot.png" alt="Fat Cat editor" width="900"><br><sub>Screenshot of the plugin page in docs/mockups.</sub></p>
+
 ## Controls
 - **Drive**: saturation amount. At 0 % a very light touch of warmth stays on by design.
 - **Fuzz**: adds clipped high frequencies.
