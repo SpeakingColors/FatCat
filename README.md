@@ -4,6 +4,8 @@
 
 Free, open source saturator for Linux, macOS and Windows (VST3 and standalone). It keeps the dynamics of your sound: the input is divided by its own envelope, saturated, then multiplied by the envelope again, so it behaves the same at any input level.
 
+**Manual:** [PDF with interface tour, opens in the browser](https://github.com/SpeakingColors/FatCat/blob/main/docs/FatCat-manual.pdf)
+
 ## Controls
 - **Drive**: saturation amount. At 0 % a very light touch of warmth stays on by design.
 - **Fuzz**: adds clipped high frequencies.
