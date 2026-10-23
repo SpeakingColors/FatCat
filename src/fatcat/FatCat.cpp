@@ -193,7 +193,7 @@ void FatCat::process(juce::AudioBuffer<float>& buf, const juce::AudioBuffer<floa
             for (int c = 0; c < nch; ++c) buf.getWritePointer(c)[s0 + i] *= inv;
             peakN = std::max(peakN, std::abs(buf.getReadPointer(0)[s0 + i]));
         }
-        // B: saturation at 2x
+        // B: saturation at 4x (nasty ranges alias badly at 2x)
         {
             juce::dsp::AudioBlock<float> block(buf.getArrayOfWritePointers(), (size_t) nch, (size_t) s0, (size_t) len);
             auto up = os.processSamplesUp(block);
@@ -213,7 +213,7 @@ void FatCat::process(juce::AudioBuffer<float>& buf, const juce::AudioBuffer<floa
                 argBuf[(size_t) c][(size_t) i] = fuzzHp[c].processSample(0, w) / (ev1 + 1.0e-5f) * (4.f + 24.f * fuzz);
             }
         }
-        // D: fuzz stage (tanh) inside its own 2x oversampled block, so it does not alias
+        // D: fuzz stage (tanh) inside its own 4x oversampled block, so it does not alias
         const bool fuzzOn = fuzz > 0.f;
         if (fuzzOn)
         {

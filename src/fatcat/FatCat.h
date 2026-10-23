@@ -21,9 +21,9 @@ public:
     juce::StringArray randomExclude() const override { return { "out" }; }
 private:
     static constexpr int kChunk = 32, kRing = 256, kMask = kRing - 1;
-    // 2x oversampling with integer latency: saturation, fuzz stage and hidden clipper each have their own
-    juce::dsp::Oversampling<float> os { 2, 1, juce::dsp::Oversampling<float>::filterHalfBandPolyphaseIIR, true, true },
-                                   osFz { 2, 1, juce::dsp::Oversampling<float>::filterHalfBandPolyphaseIIR, true, true },
+    // 4x oversampling (saturation and fuzz stage) and 2x (hidden clipper), integer latency; each stage has its own
+    juce::dsp::Oversampling<float> os { 2, 2, juce::dsp::Oversampling<float>::filterHalfBandPolyphaseIIR, true, true },
+                                   osFz { 2, 2, juce::dsp::Oversampling<float>::filterHalfBandPolyphaseIIR, true, true },
                                    osClip { 2, 1, juce::dsp::Oversampling<float>::filterHalfBandPolyphaseIIR, true, true };
     juce::dsp::StateVariableTPTFilter<float> band[2], fuzzHp[2], nastLp[2];
     std::vector<float> dryRing[2], wRing[2], envRing, turboRing;
